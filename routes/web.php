@@ -18,11 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('/cluster')->name('cluster.')->controller(ClusterController::class)->group(function(){
-    Route::get('/', 'create')->name('create');
-   
-    Route::post('/save', 'store' ) ->name('store');
-    Route::get('/liste', 'liste' ) ->name('liste');
-    Route::get('/get_communes/{departementId}', 'getCommunesByDepartement');
-
+Route::prefix('/cluster')->name('cluster.')->group(function () {
+    Route::get('/', [ClusterController::class, 'create'])->name('create');
+    Route::post('/save', [ClusterController::class, 'store'])->name('store');
+    Route::get('/liste', [ClusterController::class, 'liste'])->name('liste');
+    Route::get('/{departementId}', [ClusterController::class, 'getCommunesByDepartement'])->name('getCommunesByDepartement');
 });
+

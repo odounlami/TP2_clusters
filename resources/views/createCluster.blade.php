@@ -200,27 +200,33 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#departement_id').change(function() {
-            var departementId = $(this).val();
-            if (departementId) {
-                $.ajax({
-                    type: 'GET',
-                    url: '/get_communes/' + departementId,
-                    success: function(data) {
-                        $('#commune_id').empty();
-                        $('#commune_id').append('<option value="">Sélectionner une Commune</option>');
-                        $.each(data, function(key, value) {
-                            $('#commune_id').append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    }
-                });
-            } else {
-                $('#commune_id').empty();
-                $('#commune_id').append('<option value="">Sélectionner une Commune</option>');
-            }
-        });
+    $('#departement_id').change(function() {
+        var departementId = $(this).val();
+        if (departementId) {
+            $.ajax({
+                type: 'GET',
+                url: '/cluster/' + departementId ,
+                success: function(data) {
+                    console.log(data); // Vérifiez les données reçues dans la console
+                    $('#commune_id').empty();
+                    $('#commune_id').append('<option value="">Sélectionner une Commune</option>');
+                    $.each(data, function(key, value) {
+                        $('#commune_id').append('<option value="' + key + '">' + value + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(error); // Affiche les erreurs dans la console
+                }
+            });
+        } else {
+            $('#commune_id').empty();
+            $('#commune_id').append('<option value="">Sélectionner une Commune</option>');
+        }
     });
+});
+
 </script>
+
 t>
 
 @endsection

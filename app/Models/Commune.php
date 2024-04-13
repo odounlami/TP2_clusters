@@ -9,7 +9,7 @@ class Commune extends Model
 {
     use HasFactory;
     protected $table = 'communes';
-    
+
      //relation avec departement 
      public function departement()
      {
@@ -18,6 +18,6 @@ class Commune extends Model
 
     protected $fillable = [
         'nom',
-        
+        'departement_id',
     ];
 }

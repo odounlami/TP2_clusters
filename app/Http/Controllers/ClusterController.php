@@ -60,10 +60,12 @@ class ClusterController extends Controller
     //controller for endpoint : 
         public function getCommunesByDepartement($departementId)
         {
-            // Récupérer les communes pour le département spécifié
-            $communes = Commune::where('departement_id', $departementId)->pluck('nom', 'departement_id');
-    
-            // Retourner les communes au format JSON
+              // Logique pour récupérer les communes en fonction de $departementId
+             // Retourner les résultats au format JSON
+
+            $communes = Commune::where('departement_id', $departementId)->pluck('nom', 'idCommune');
+
             return response()->json($communes);
+
         }
 }
