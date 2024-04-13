@@ -1,0 +1,23 @@
+* {
+    font-size: 12px;
+    font-family: Arial;
+    background: #ECF5F5;
+}
+
+.champs {
+    margin-bottom: 20px;
+}
+
+.champs2 {
+    margin-bottom: 3px;
+}
+
+.btn1 {
+    background: #F39C12;
+    color: white;
+}
+
+.btn2 {
+    color: white;
+    background: #00C0EF;
+}
